@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Add Person</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+  </head>
+  <body>
+  <section class="section">
+    <div class="container">
+      <h1 class="title">
+        Person
+      </h1>
+
+      <div>
+        <div class="field">
+                <label class="label">Id</label>
+                <div class="control">
+                    <input class="input" type="text" placeholder="Id" id='person_id'>
+                </div>
+            </div>          
+        <div class="field">
+            <label class="label">Name</label>
+            <div class="control">
+                <input class="input" type="text" placeholder="Name" id='person_name'>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Surname</label>
+            <div class="control">
+                <input class="input" type="text" placeholder="Surname" id='person_surname'>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Age</label>
+            <div class="control">
+                <input class="input" type="text" placeholder="Age" id='person_age'>
+            </div>
+        </div>
+        <div class="field is-grouped">
+                <div class="control">
+                  <button class="button is-link" id="savePersonBtn">Submit</button>
+                </div>
+        </div>                    
+      </div>
+    </div>
+  </section>
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <script src="js/pouchdb-7.1.1.min.js"></script>
+  <script src="js/personform.js"></script>
+  </body>
+</html>

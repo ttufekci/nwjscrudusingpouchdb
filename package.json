@@ -1,0 +1,15 @@
+{
+  "name": "crudsample",
+  "version": "1.0.0",
+  "description": "a simple crud app in nwjs",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "talat",
+  "license": "ISC",
+  "window": {
+    "width": 550,
+    "height": 500
+  }
+}
