@@ -6,11 +6,14 @@
 
     var addPersonButton = document.getElementById('addPersonBtn');
 
-    if (addPersonButton) {
-        addPersonButton.addEventListener('click', openPersonForm);
-    }
+    addPersonButton.addEventListener('click', openPersonForm);
 
-    
+    var refreshButton = document.getElementById('refreshBtn');
+
+    refreshButton.addEventListener('click', function () {
+        listAllPersons();
+    });    
+   
     function openPersonForm()
     {
         nw.Window.open('personform.html', 
@@ -20,6 +23,36 @@
         }, 
         function(win) {});
     }
+
+    function openPersonFormForUpdate(myid)
+    {
+        db.get(myid).then(function (doc){
+            if (doc) {
+                var name = doc.name;
+                var surname = doc.surname;
+                var age = doc.age;
+                
+                var url = `personform.html?id=${myid}&name=${name}&age=${age}&surname=${surname}`;
+
+                nw.Window.open(url, 
+                {
+                    width: 500,
+                    height: 550
+                }, 
+                function(win) {});
+            }
+        });
+    }        
+   
+    function openPersonForm()
+    {
+        nw.Window.open('personform.html', 
+        {
+            width: 500,
+            height: 550
+        }, 
+        function(win) {});
+    }    
 
     function removePerson(myid)
     {
@@ -87,32 +120,54 @@
     
                 // Append a text node to the cell
                 newText  = document.createTextNode(myage);
-                newCell.appendChild(newText);
+                newCell.appendChild(newText);             
+                
 
+                
                 // Insert a cell in the row at index 0
                 newCell  = newRow.insertCell(4);
                 
-                var updatebutton = document.createElement("BUTTON");
-                updatebutton.innerText = 'Update';
-                updatebutton.className = 'button';
-                updatebutton.onclick = function () {
-                    removePerson(myid);
+                var anchorUpdate = document.createElement("a");
+                anchorUpdate.className = 'button';
+                anchorUpdate.onclick = function () {
+                    openPersonFormForUpdate(myid);
                 }
-    
-                newCell.appendChild(updatebutton);                  
-                
-                // Insert a cell in the row at index 0
+
+                var spanIcon = document.createElement("span");
+                spanIcon.className = 'icon is-small';
+
+                var icon = document.createElement("i");
+                icon.className = "fas fa-pen";
+
+                spanIcon.appendChild(icon);
+
+                anchorUpdate.appendChild(spanIcon);
+
+                newCell.appendChild(anchorUpdate);
+
+                //
+
                 newCell  = newRow.insertCell(5);
-                
-                var removebutton = document.createElement("BUTTON");
-                removebutton.innerText = 'Remove';
-                removebutton.className = 'button';
-                removebutton.onclick = function () {
+
+                var anchorRemove = document.createElement("a");
+                anchorRemove.className = 'button';
+                anchorRemove.onclick = function () {
                     removePerson(myid);
                 }
-    
-                newCell.appendChild(removebutton);              
-            });
+
+                spanIcon = document.createElement("span");
+                spanIcon.className = 'icon is-small';
+
+                icon = document.createElement("i");
+                icon.className = "fas fa-trash";
+
+                spanIcon.appendChild(icon);
+
+                anchorRemove.appendChild(spanIcon);
+
+                newCell.appendChild(anchorRemove);
+
+            });anchorRemove
         }).catch(function (err) {
             console.log(err);
         });        

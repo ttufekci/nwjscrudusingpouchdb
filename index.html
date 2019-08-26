@@ -14,7 +14,22 @@
       </h1>
 
       <div>
-          <button class="button" id='addPersonBtn'>Add</button>
+          <div class="field has-addons">
+              <a class="button is-primary" id='addPersonBtn'>
+                  <span class="icon is-small">
+                    <i class="fas fa-plus"></i>
+                  </span>
+                  <span>Add</span>
+              </a>
+
+              <a class="button" id='refreshBtn'>
+                  <span class="icon is-small">
+                    <i class="fas fa-sync"></i>
+                  </span>
+                  <span>Refresh</span>
+              </a>              
+          </div>
+
           <table id="personlist" class="table is-bordered">
               <thead>
                   <tr>
