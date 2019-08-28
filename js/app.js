@@ -167,7 +167,7 @@
 
                 newCell.appendChild(anchorRemove);
 
-            });anchorRemove
+            });
         }).catch(function (err) {
             console.log(err);
         });        
